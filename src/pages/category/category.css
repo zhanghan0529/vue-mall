@@ -815,7 +815,8 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .main-content {
-  height: 100%
+  height: 100%;
+  overflow: auto;
 }
 
 .main-content .category-title {
@@ -1074,7 +1075,7 @@ only screen and (min-device-pixel-ratio:1.5) {
 }
 
 .keywords-list {
-  padding-bottom: 20px
+  padding-bottom: 50px
 }
 
 .keywords-list li {

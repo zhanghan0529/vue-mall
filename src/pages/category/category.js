@@ -10,26 +10,46 @@ Vue.config.productionTip = false
 
 new Vue({
     el: "#app",
-    data:{
+    data: {
         topList: null,
-        isActive:0
+        subList: null,
+        rank: null,
+        isActive: 0,
+        id: -1
     },
-    components:{
+    components: {
         Foot
     },
     created() {
         this.getToplist()
+        this.getIndex(0)
+        
     },
-    methods:{
-        getToplist(){
-            axios.get(url.topList).then(res=>{
+    methods: {
+        getToplist() {
+            axios.get(url.topList).then(res => {
                 this.topList = res.data.lists;
                 // console.log(res.data.lists)
             })
+            this.getRank()
         },
-        getIndex(id){
+        getIndex(index,id) {
             // console.log(id)
-            this.isActive = id;
+            this.isActive = index;
+            // this.id = id
+            if (index === -1) {
+                this.getRank()
+            } else {
+                axios.get(url.subList,{id}).then(res => {
+                    this.subList = res.data
+                })
+            }
+            // console.log(id)
+        },
+        getRank() {
+            axios.get(url.rank).then(res => {
+                this.rank = res.data.data
+            })
         }
     }
 })
