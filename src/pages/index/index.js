@@ -5,7 +5,7 @@ import Vue from 'vue'
 // import router from './router'
 import axios from 'axios'
 import url from 'js/api'
-
+import mixin from 'js/mixin.js'
 
 import 'css/common.css'
 import './index.css'
@@ -15,6 +15,7 @@ import Foot from 'components/Foot.vue'
 // import Hello from 'components/HelloWorld.vue'
 
 Vue.config.productionTip = false
+
 
 import { InfiniteScroll } from 'mint-ui';
 Vue.use(InfiniteScroll)
@@ -71,5 +72,6 @@ new Vue({
       })
     }
   },
+  mixins:[mixin]
 
 })

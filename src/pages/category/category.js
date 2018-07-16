@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Foot from 'components/Foot.vue'
 import axios from 'axios'
 import url from 'js/api.js'
+import mixin from 'js/mixin.js'
 
 import 'css/common.css';
 import './category.css';
@@ -50,8 +51,12 @@ new Vue({
             axios.get(url.rank).then(res => {
                 this.rank = res.data.data
             })
+        },
+        goSearch(id,name){
+            location.href = 'search.html?keyword='+`${name}`+'&id='+`${id}`;
         }
-    }
+    },
+    mixins:[mixin]
 })
 
 
