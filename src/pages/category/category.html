@@ -75,7 +75,7 @@
                   </div>
                   <ul>
                     <li class="goods-item" v-for='(list,index) in rank.hotGoods'>
-                      <a href="https://h5.youzan.com/v2/showcase/goods?alias=27cjv5wdsb4to&amp;source=yzapp&amp;f_platform=yzapp">
+                      <a :href="'goods.html?id='+list.id">
                         <div class="thumb badge center-img">
                           <img :src="list.image">
                           <span class="num">{{index+1}}</span>
@@ -135,7 +135,8 @@
                 <li class="category-item js-category-item" 
                 v-for ='(list,index) in subList.data.brandList'
                 :data-item-id="list.id" 
-                data-item-name="良品铺子">
+                :data-item-name="list.name"
+                @click = 'goSearch(list.id,list.name)'>
                   <img :src="list.image" :alt="list.name" class="category-img">
                   <span class="category-item-name">
                    {{list.name}} </span>
