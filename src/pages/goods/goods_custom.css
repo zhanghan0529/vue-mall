@@ -133,7 +133,7 @@
     overflow: hidden;
     text-align: left;
     word-wrap: break-word;
-    position: relative
+    position: relative;
   }
   
   .custom-richtext img+br {

@@ -1,7 +1,7 @@
 <template>
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swp-page swiper-slide" v-for = 'list in lists' :key = 'list.id'  >
+            <div class="swp-page swiper-slide" v-for = 'list in lists' :key = 'list.id'>
             <a class="js-no-follow" :href="list.clickUrl">
                 <img class="goods-main-photo fadeIn" :src="list.image">
             </a>
@@ -25,9 +25,6 @@ export default {
     lists: {
       required: true
     }
-  },
-  created(){
-    //   console.log()
   },
   mounted(){
    let zzz= new Swiper('.swiper-container', {

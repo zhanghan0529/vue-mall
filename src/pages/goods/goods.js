@@ -24,6 +24,12 @@ new Vue({
     detailTab:['商品详情','本店成交'],
     godetailsTab: 0,
     dealList:null,
+    imgsList:null,
+    skuType: null,
+    showSku: false,
+    skuNum : 1,
+    isAddcart:false,
+    showMessage:false
   },
   created() {
       this.getDetails()
@@ -31,7 +37,14 @@ new Vue({
   methods: {
     getDetails() {
       axios.get(url.details,{id}).then(res => {
-        this.details = res.data.data
+        this.details = res.data.data;
+        this.imgsList = [];
+        this.details.imgs.forEach((item,index) => {
+          this.imgsList.push({
+            clickUrl:'javascript:void(0)',
+            image:item
+          })
+        });
       }) 
     },
     goTab(index){
@@ -45,6 +58,41 @@ new Vue({
         axios.get(url.deal,{id}).then(res =>{
             this.dealList = res.data.data.lists
         })
+    },
+    chooseSku(type){
+      this.skuType = type;
+      this.showSku = true;
+    },
+    closeSku(){
+      this.showSku = false;
+      this.skuType = null;
+    },
+    addSku(num){
+      if(num<0&&this.skuNum === 1){
+        return
+      }
+      this.skuNum += num
+      
+    },
+    addCart(){
+      axios.post(url.add,{id,
+        number: this.skuNum}).then(res=>{
+        if(res.status ==200){
+          this.showSku =false;
+          this.skuType = null;
+          this.isAddcart =true;
+          this.showMessage =true
+          setTimeout(()=>{
+            this.showMessage =false
+          },1000)
+        }
+      })
+    }
+  },
+  watch:{
+    showSku(val,oldVal){
+      document.body.style.overflow = val ? 'hidden' : 'auto';
+      document.querySelector('html').style.overflow = val ? 'hidden' : 'auto';
     }
   },
   mixins:[mixin]

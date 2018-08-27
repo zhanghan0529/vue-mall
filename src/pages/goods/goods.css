@@ -1,3 +1,11 @@
+.up-enter-active, .up-leave-active {
+  transition: all .3s ease;
+  transform: translateY(0)
+}
+.up-enter, .up-leave-to{
+  transform: translateY(100%)
+}
+
 .modal-login {
   font-family: Arial, Helvetica, sans-serif;
   background-color: #edf0f4;
@@ -5,6 +13,7 @@
   display: none
 }
 
+ 
 .account-form {
   overflow: hidden
 }
@@ -2586,7 +2595,7 @@ only screen and (min-device-pixel-ratio: 1.5) {
   margin-top: 10px;
   width: 16px;
   height: 16px;
-  background: url("/v2/image/loader.gif") no-repeat center center;
+  background: url("https://b.yzcdn.cn/v2/image/loader@2x.gif") no-repeat center center;
   background-size: 16px 16px
 }
 
@@ -2595,7 +2604,7 @@ only screen and (min--moz-device-pixel-ratio: 1.5),
 only screen and (min-device-pixel-ratio: 1.5) {
   .list-finished span,
   .loading-more span {
-    background-image: url("/v2/image/loader@2x.gif")
+    background-image: url("https://b.yzcdn.cn/v2/image/loader@2x.gif")
   }
 }
 
